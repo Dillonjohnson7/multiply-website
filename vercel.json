@@ -1,6 +1,0 @@
-{
-  "deploymentProtection": {
-    "production": "none",
-    "preview": "none"
-  }
-}
