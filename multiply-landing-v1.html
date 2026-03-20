@@ -26,6 +26,7 @@
   html {
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
@@ -42,6 +43,7 @@
      ═══════════════════════════════════════════ */
   .hero {
     height: 100vh;
+    height: 100svh;
     background: var(--black);
     display: flex;
     align-items: center;
@@ -55,16 +57,16 @@
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
     width: 100%;
     height: 160px;
   }
 
+  /* full-width so bar grows from the actual left edge */
   .band-wrap {
     position: relative;
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
     will-change: transform, opacity;
   }
 
@@ -77,8 +79,11 @@
     will-change: width;
   }
 
+  /* CSS-centered so GSAP (opacity only) doesn't conflict */
   .multiply-word {
     position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     font-size: clamp(17px, 2.2vw, 24px);
     font-weight: 600;
     letter-spacing: 0.24em;
@@ -89,8 +94,11 @@
     pointer-events: none;
   }
 
+  /* inset + margin:auto centers without CSS transform — safe for GSAP */
   .x-logo {
     position: absolute;
+    inset: 0;
+    margin: auto;
     width: clamp(80px, 12vw, 120px);
     height: clamp(80px, 12vw, 120px);
     opacity: 0;
@@ -101,7 +109,6 @@
     width: 100%;
     height: 100%;
     display: block;
-    overflow: visible;
   }
 
   .x-logo rect {
@@ -482,7 +489,7 @@
   </section>
 
   <script>
-    const barW = window.innerWidth;
+    const barW = document.documentElement.clientWidth;
     const barH = Math.max(64, Math.round(barW * 0.085));
     const xSize = Math.round(barH * 1.5);
 
