@@ -531,7 +531,7 @@
 
   <script>
     const barW = document.documentElement.clientWidth;
-    const barH = Math.max(64, Math.round(barW * 0.085));
+    const barH = Math.round(Math.max(barW * 0.085, window.innerHeight * 0.09));
     const xSize = Math.round(barH * 1.5);
 
     // Size everything relative to the bar
