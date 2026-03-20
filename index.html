@@ -114,6 +114,22 @@
     fill: white;
   }
 
+  .x-echo {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: clamp(80px, 12vw, 120px);
+    height: clamp(80px, 12vw, 120px);
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .x-echo svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
   .hero-wordmark {
     color: var(--white);
     font-family: var(--font-display);
@@ -397,6 +413,30 @@
           </g>
         </svg>
       </div>
+      <div class="x-echo" id="xEcho" aria-hidden="true">
+        <svg viewBox="0 0 200 200" fill="none">
+          <g transform="translate(100,100) rotate(45)">
+            <rect x="-92" y="-33" width="184" height="66" rx="3" stroke="white" stroke-width="1.2"/>
+            <rect x="-33" y="-92" width="66" height="184" rx="3" stroke="white" stroke-width="1.2"/>
+          </g>
+        </svg>
+      </div>
+      <div class="x-echo" id="xEcho2" aria-hidden="true">
+        <svg viewBox="0 0 200 200" fill="none">
+          <g transform="translate(100,100) rotate(45)">
+            <rect x="-92" y="-33" width="184" height="66" rx="3" stroke="white" stroke-width="0.8"/>
+            <rect x="-33" y="-92" width="66" height="184" rx="3" stroke="white" stroke-width="0.8"/>
+          </g>
+        </svg>
+      </div>
+      <div class="x-echo" id="xEcho3" aria-hidden="true">
+        <svg viewBox="0 0 200 200" fill="none">
+          <g transform="translate(100,100) rotate(45)">
+            <rect x="-92" y="-33" width="184" height="66" rx="3" stroke="white" stroke-width="0.5"/>
+            <rect x="-33" y="-92" width="66" height="184" rx="3" stroke="white" stroke-width="0.5"/>
+          </g>
+        </svg>
+      </div>
     </div>
   </section>
 
@@ -501,16 +541,47 @@
 
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-    gsap.set("#bandCore",     { width: 0, height: barH, transformOrigin: "left center" });
-    gsap.set("#multiplyWord", { opacity: 0, fontSize: Math.round(barH * 0.28) });
-    gsap.set("#bandWrap",     { transformOrigin: "center center" });
-    gsap.set("#xLogo",        { opacity: 0, scale: 0.7, rotate: -20, filter: "blur(8px)" });
+    ['xEcho', 'xEcho2', 'xEcho3'].forEach(id => {
+      document.getElementById(id).style.width  = xSize + 'px';
+      document.getElementById(id).style.height = xSize + 'px';
+    });
+
+    gsap.set("#bandCore",                       { width: 0, height: barH, transformOrigin: "left center" });
+    gsap.set("#multiplyWord",                   { opacity: 0, fontSize: Math.round(barH * 0.28) });
+    gsap.set("#bandWrap",                       { transformOrigin: "center center" });
+    gsap.set("#xLogo",                          { opacity: 0, scale: 0.7, rotate: -20, filter: "blur(8px)" });
+    gsap.set(["#xEcho", "#xEcho2", "#xEcho3"],  { opacity: 0, scale: 1 });
 
     tl.to("#bandCore",     { width: barW, duration: 0.7 });
     tl.to("#multiplyWord", { opacity: 1, duration: 0.22 }, "-=0.05");
     tl.to("#multiplyWord", { opacity: 0, duration: 0.16, ease: "power2.in" }, "+=0.6");
-    tl.to("#bandWrap",     { rotate: 270, scale: 0, duration: 0.42, ease: "power3.in" }, "<+0.04");
-    tl.to("#xLogo",        { opacity: 1, scale: 1, rotate: 0, filter: "blur(0px)", duration: 0.48, ease: "back.out(1.4)" }, "-=0.08");
+    // bar contracts from both sides down to the X's width
+    tl.to("#bandCore",     { width: xSize, x: (barW - xSize) / 2, duration: 0.38, ease: "power3.inOut" });
+    tl.to("#bandWrap",     { rotate: 270, scale: 0, duration: 0.42, ease: "power3.in" }, "-=0.06");
+
+    tl.addLabel("xIn");
+    tl.to("#xLogo", { opacity: 1, scale: 1, rotate: 0, filter: "blur(0px)", duration: 0.48, ease: "back.out(1.4)" }, "xIn-=0.08");
+
+    // three echo rings, staggered — each expands and fades like a ripple
+    tl.to("#xEcho",  { opacity: 0.50, scale: 1.15, duration: 0.16, ease: "power2.out" }, "xIn+=0.22");
+    tl.to("#xEcho",  { opacity: 0,    scale: 1.42, duration: 0.44, ease: "power1.in"  }, "xIn+=0.36");
+
+    tl.to("#xEcho2", { opacity: 0.32, scale: 1.22, duration: 0.18, ease: "power2.out" }, "xIn+=0.32");
+    tl.to("#xEcho2", { opacity: 0,    scale: 1.60, duration: 0.50, ease: "power1.in"  }, "xIn+=0.46");
+
+    tl.to("#xEcho3", { opacity: 0.18, scale: 1.30, duration: 0.20, ease: "power2.out" }, "xIn+=0.42");
+    tl.to("#xEcho3", { opacity: 0,    scale: 1.80, duration: 0.56, ease: "power1.in"  }, "xIn+=0.58");
+
+    // X vibrates as it settles
+    tl.to("#xLogo", {
+      keyframes: [
+        { scale: 1.04, filter: "blur(0.5px)", duration: 0.07 },
+        { scale: 0.97, filter: "blur(0px)",   duration: 0.07 },
+        { scale: 1.02,                        duration: 0.06 },
+        { scale: 0.99,                        duration: 0.05 },
+        { scale: 1.00,                        duration: 0.05 }
+      ]
+    }, "xIn+=0.38");
   </script>
 </body>
 </html>
