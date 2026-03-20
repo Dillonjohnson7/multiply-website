@@ -51,32 +51,61 @@
     overflow: hidden;
   }
 
-  .hero-mark {
+  .logo-stage {
     position: relative;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 0;
+    justify-content: center;
+    width: 100%;
+    height: 160px;
   }
 
-  .hero-x {
-    width: 280px;
-    height: 280px;
-    cursor: pointer;
+  .band-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    will-change: transform, opacity;
   }
 
-  .hero-x svg rect {
-    fill: white;
-    transition: fill 0.3s ease;
+  .band-core {
+    width: 0;
+    height: clamp(60px, 9vw, 84px);
+    border-radius: 0;
+    background: #fff;
+    transform-origin: left center;
+    will-change: width;
   }
 
-  .hero-x:hover svg rect {
-    fill: var(--purple);
+  .multiply-word {
+    position: absolute;
+    font-size: clamp(17px, 2.2vw, 24px);
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: lowercase;
+    color: #000;
+    opacity: 0;
+    white-space: nowrap;
+    pointer-events: none;
   }
 
-  .hero-x svg {
+  .x-logo {
+    position: absolute;
+    width: clamp(80px, 12vw, 120px);
+    height: clamp(80px, 12vw, 120px);
+    opacity: 0;
+    will-change: transform, opacity, filter;
+  }
+
+  .x-logo svg {
     width: 100%;
     height: 100%;
+    display: block;
+    overflow: visible;
+  }
+
+  .x-logo rect {
+    fill: white;
   }
 
   .hero-wordmark {
@@ -333,12 +362,13 @@
       font-size: 3.5rem;
     }
 
-    .hero-x {
-      width: 180px;
-      height: 180px;
+    .x-logo {
+      width: clamp(60px, 10vw, 90px);
+      height: clamp(60px, 10vw, 90px);
     }
   }
 </style>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 </head>
 <body>
 
@@ -346,12 +376,16 @@
        SECTION 1 — HERO
        ════════════════════════════════════════ -->
   <section class="hero">
-    <div class="hero-mark">
-      <div class="hero-x">
+    <div class="logo-stage">
+      <div class="band-wrap" id="bandWrap">
+        <div class="band-core" id="bandCore"></div>
+        <div class="multiply-word" id="multiplyWord">multiply</div>
+      </div>
+      <div class="x-logo" id="xLogo" aria-hidden="true">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
           <g transform="translate(100,100) rotate(45)">
-            <rect x="-85" y="-30" width="170" height="60" rx="2"/>
-            <rect x="-30" y="-85" width="60" height="170" rx="2"/>
+            <rect x="-85" y="-30" width="170" height="60" rx="2" fill="white"/>
+            <rect x="-30" y="-85" width="60" height="170" rx="2" fill="white"/>
           </g>
         </svg>
       </div>
@@ -447,5 +481,28 @@
     </div>
   </section>
 
+  <script>
+    const barW = window.innerWidth;
+    const barH = Math.max(64, Math.round(barW * 0.085));
+    const xSize = Math.round(barH * 1.5);
+
+    // Size everything relative to the bar
+    document.getElementById('xLogo').style.width  = xSize + 'px';
+    document.getElementById('xLogo').style.height = xSize + 'px';
+    document.querySelector('.logo-stage').style.height = Math.round(barH * 2.5) + 'px';
+
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+    gsap.set("#bandCore",     { width: 0, height: barH, transformOrigin: "left center" });
+    gsap.set("#multiplyWord", { opacity: 0, fontSize: Math.round(barH * 0.28) });
+    gsap.set("#bandWrap",     { transformOrigin: "center center" });
+    gsap.set("#xLogo",        { opacity: 0, scale: 0.7, rotate: -20, filter: "blur(8px)" });
+
+    tl.to("#bandCore",     { width: barW, duration: 0.7 });
+    tl.to("#multiplyWord", { opacity: 1, duration: 0.22 }, "-=0.05");
+    tl.to("#multiplyWord", { opacity: 0, duration: 0.16, ease: "power2.in" }, "+=0.6");
+    tl.to("#bandWrap",     { rotate: 270, scale: 0, duration: 0.42, ease: "power3.in" }, "<+0.04");
+    tl.to("#xLogo",        { opacity: 1, scale: 1, rotate: 0, filter: "blur(0px)", duration: 0.48, ease: "back.out(1.4)" }, "-=0.08");
+  </script>
 </body>
 </html>
