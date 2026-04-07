@@ -30,3 +30,13 @@ tl.to("#xLogo",   { rotation: "+=315", duration: 0.78, ease: "power2.out" });
 
 // second arm draws in during the spin
 tl.to("#xArm2",   { scaleY: 1, duration: 0.32, ease: "back.out(1.7)" }, "-=0.4");
+
+// scroll arrow fades in after logo animation completes
+tl.to("#scrollArrow", { opacity: 1, duration: 0.6, ease: "power1.out", onComplete: function() {
+  document.getElementById('scrollArrow').classList.add('visible');
+}}, "+=0.5");
+
+// click arrow to scroll to next section
+document.getElementById('scrollArrow').addEventListener('click', function() {
+  document.querySelector('.story').scrollIntoView({ behavior: 'smooth' });
+});

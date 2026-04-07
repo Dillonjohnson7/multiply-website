@@ -116,27 +116,46 @@
     opacity: 0;
   }
 
-  .hero-scroll {
+  .scroll-arrow {
     position: absolute;
-    bottom: 40px;
+    bottom: 36px;
     left: 50%;
     transform: translateX(-50%);
-    color: var(--gray);
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards, pulse 2s ease-in-out 2s infinite;
     opacity: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    cursor: pointer;
   }
 
-  .hero-scroll::after {
-    content: '';
-    display: block;
-    width: 1px;
-    height: 24px;
-    background: var(--gray);
-    margin: 10px auto 0;
+  .scroll-arrow svg {
+    width: 22px;
+    height: 22px;
+    filter: drop-shadow(0 0 6px rgba(255,255,255,0.5));
+    animation: glowPulse 2.4s ease-in-out infinite;
+  }
+
+  .scroll-arrow svg path {
+    stroke: rgba(255,255,255,0.55);
+    stroke-width: 2;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  @keyframes glowPulse {
+    0%, 100% { filter: drop-shadow(0 0 4px rgba(255,255,255,0.3)); opacity: 0.5; }
+    50% { filter: drop-shadow(0 0 10px rgba(255,255,255,0.7)); opacity: 1; }
+  }
+
+  @keyframes bobDown {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(5px); }
+  }
+
+  .scroll-arrow.visible svg {
+    animation: glowPulse 2.4s ease-in-out infinite, bobDown 2.4s ease-in-out infinite;
   }
 
   /* ═══════════════════════════════════════════
@@ -374,6 +393,11 @@
           </g>
         </svg>
       </div>
+    </div>
+    <div class="scroll-arrow" id="scrollArrow">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 5 L12 19 M5 13 L12 19 L19 13"/>
+      </svg>
     </div>
   </section>
 
