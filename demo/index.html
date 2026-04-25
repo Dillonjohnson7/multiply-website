@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multiply — Demo</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background: #000;
+    color: #FAFAFA;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Corner X logos */
+  .corner {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+  }
+  .corner svg { width: 100%; height: 100%; display: block; }
+  .corner-tl { top: 24px; left: 24px; }
+  .corner-tr { top: 24px; right: 24px; }
+  .corner-bl { bottom: 24px; left: 24px; }
+  .corner-br { bottom: 24px; right: 24px; }
+
+  /* Header */
+  .header {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  /* Buttons */
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .demo-btn {
+    display: block;
+    width: 100%;
+    padding: 28px 24px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 16px;
+    color: #FAFAFA;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.3s ease, background 0.3s ease;
+  }
+
+  .demo-btn:hover {
+    border-color: #fff;
+    background: rgba(255,255,255,0.06);
+  }
+
+  .demo-btn:active {
+    background: rgba(255,255,255,0.1);
+  }
+</style>
+</head>
+<body>
+
+  <div class="corner corner-tl">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(100,100) rotate(45)">
+        <rect x="-85" y="-30" width="170" height="60" rx="2" fill="white"/>
+        <rect x="-30" y="-85" width="60" height="170" rx="2" fill="white"/>
+      </g>
+    </svg>
+  </div>
+  <div class="corner corner-tr">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(100,100) rotate(45)">
+        <rect x="-85" y="-30" width="170" height="60" rx="2" fill="white"/>
+        <rect x="-30" y="-85" width="60" height="170" rx="2" fill="white"/>
+      </g>
+    </svg>
+  </div>
+  <div class="corner corner-bl">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(100,100) rotate(45)">
+        <rect x="-85" y="-30" width="170" height="60" rx="2" fill="white"/>
+        <rect x="-30" y="-85" width="60" height="170" rx="2" fill="white"/>
+      </g>
+    </svg>
+  </div>
+  <div class="corner corner-br">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(100,100) rotate(45)">
+        <rect x="-85" y="-30" width="170" height="60" rx="2" fill="white"/>
+        <rect x="-30" y="-85" width="60" height="170" rx="2" fill="white"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="header">Multiply</div>
+
+  <div class="buttons">
+    <button class="demo-btn">3D Printer Manager</button>
+    <button class="demo-btn">CNC Machine Tending</button>
+    <button class="demo-btn">Printed Part Post Processing</button>
+    <button class="demo-btn">Part Sorting</button>
+  </div>
+
+</body>
+</html>
