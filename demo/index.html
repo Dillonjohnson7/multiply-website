@@ -81,6 +81,18 @@
   .demo-btn:active {
     background: rgba(255,255,255,0.1);
   }
+
+  .demo-btn .coming-soon {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 400;
+    opacity: 0.45;
+    margin-top: 6px;
+  }
+
+  a.demo-btn {
+    text-decoration: none;
+  }
 </style>
 </head>
 <body>
@@ -121,10 +133,10 @@
   <div class="header">Multiply</div>
 
   <div class="buttons">
-    <button class="demo-btn">3D Printer Manager</button>
-    <button class="demo-btn">CNC Machine Tending</button>
-    <button class="demo-btn">Printed Part Post Processing</button>
-    <button class="demo-btn">Part Sorting</button>
+    <button class="demo-btn">3D Printer Manager<span class="coming-soon">[Coming Soon]</span></button>
+    <button class="demo-btn">CNC Machine Tending<span class="coming-soon">[Coming Soon]</span></button>
+    <a class="demo-btn" href="https://youtu.be/lhWn29ZCWZc" target="_blank" rel="noopener">Printed Part Post Processing</a>
+    <button class="demo-btn">Part Sorting<span class="coming-soon">[Coming Soon]</span></button>
   </div>
 
 </body>
