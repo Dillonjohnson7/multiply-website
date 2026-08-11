@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sentinel — Multiply</title>
+<meta name="description" content="A camera-carrying robot arm that lets you watch your machines from anywhere and stop them the moment something goes wrong.">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300;1,9..40,400&display=swap');
+
+  :root {
+    --black: #000000;
+    --white: #FAFAFA;
+    --purple: #9333EA;
+    --gray: #888888;
+    --font-display: 'DM Sans', sans-serif;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: var(--font-display);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  .page {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px 56px;
+  }
+
+  .brand-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .brand {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--white);
+  }
+
+  .brand svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .content {
+    max-width: 620px;
+    margin: 64px auto;
+    text-align: left;
+  }
+
+  .product-name {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+  }
+
+  .tagline {
+    color: var(--gray);
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    margin-bottom: 40px;
+  }
+
+  .content p {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 0.98rem;
+    line-height: 1.72;
+    color: var(--white);
+    margin-bottom: 24px;
+    font-weight: 400;
+  }
+
+  .content p:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .footer-cta-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px 0;
+  }
+
+  .footer-cta {
+    display: inline-block;
+    border: 1px solid #555;
+    color: var(--white);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 16px 44px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .footer-cta:hover {
+    border-color: var(--white);
+    background: var(--white);
+    color: var(--black);
+  }
+
+  @media (max-width: 900px) {
+    .page {
+      padding: 28px 24px;
+    }
+
+    .product-name {
+      font-size: 2.2rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <div class="page">
+    <div class="brand-row">
+      <div class="brand">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(100,100) rotate(45)">
+            <rect x="-85" y="-30" width="170" height="60" rx="2" fill="white"/>
+            <rect x="-30" y="-85" width="60" height="170" rx="2" fill="white"/>
+          </g>
+        </svg>
+        Multiply
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="product-name">SENTINEL</div>
+      <div class="tagline">Your machines, watched. From anywhere.</div>
+
+      <p>A camera-carrying robot arm beside your machine streams live video to any browser. Check on a job from home, reposition the view like you're standing there, and press the machine's physical stop button the moment something goes wrong.</p>
+      <p>No code. No integrators. No new infrastructure. Your operators teach it by hand in minutes.</p>
+      <p>Overnight runs without the 2am drive. Failed jobs caught before they become scrap. A machine left running is no longer a machine left alone.</p>
+      <p>Now live in its first pilot deployment at a Massachusetts machine shop.</p>
+    </div>
+
+    <div class="footer-cta-row">
+      <a href="mailto:founders@multiplylabor.com" class="footer-cta">Get in touch</a>
+    </div>
+  </div>
+
+</body>
+</html>
