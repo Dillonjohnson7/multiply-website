@@ -26,7 +26,7 @@
     font-family: var(--font-display);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: var(--black);
+    background: var(--black) url('bg.jpg') center center / cover no-repeat fixed;
     color: var(--white);
     overflow-x: hidden;
   }
@@ -35,15 +35,25 @@
     min-height: 100vh;
     min-height: 100svh;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+  }
+
+  .card {
+    background: var(--black);
+    max-width: 620px;
+    width: 100%;
+    padding: 48px 56px;
+    display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 40px 56px;
   }
 
   .brand-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 48px;
   }
 
   .brand {
@@ -63,8 +73,6 @@
   }
 
   .content {
-    max-width: 620px;
-    margin: 64px auto;
     text-align: left;
   }
 
@@ -102,7 +110,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 40px 0;
+    margin-top: 40px;
   }
 
   .footer-cta {
@@ -125,8 +133,8 @@
   }
 
   @media (max-width: 900px) {
-    .page {
-      padding: 28px 24px;
+    .card {
+      padding: 36px 28px;
     }
 
     .product-name {
@@ -138,30 +146,32 @@
 <body>
 
   <div class="page">
-    <div class="brand-row">
-      <div class="brand">
-        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-          <g transform="translate(100,100) rotate(45)">
-            <rect x="-85" y="-30" width="170" height="60" rx="2" fill="white"/>
-            <rect x="-30" y="-85" width="60" height="170" rx="2" fill="white"/>
-          </g>
-        </svg>
-        Multiply
+    <div class="card">
+      <div class="brand-row">
+        <div class="brand">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(100,100) rotate(45)">
+              <rect x="-85" y="-30" width="170" height="60" rx="2" fill="white"/>
+              <rect x="-30" y="-85" width="60" height="170" rx="2" fill="white"/>
+            </g>
+          </svg>
+          Multiply
+        </div>
       </div>
-    </div>
 
-    <div class="content">
-      <div class="product-name">SENTINEL</div>
-      <div class="tagline">Your machines, watched. From anywhere.</div>
+      <div class="content">
+        <div class="product-name">SENTINEL</div>
+        <div class="tagline">Your machines, watched. From anywhere.</div>
 
-      <p>A camera-carrying robot arm beside your machine streams live video to any browser. Check on a job from home, reposition the view like you're standing there, and press the machine's physical stop button the moment something goes wrong.</p>
-      <p>No code. No integrators. No new infrastructure. Your operators teach it by hand in minutes.</p>
-      <p>Overnight runs without the 2am drive. Failed jobs caught before they become scrap. A machine left running is no longer a machine left alone.</p>
-      <p>Now live in its first pilot deployment at a Massachusetts machine shop.</p>
-    </div>
+        <p>A camera-carrying robot arm beside your machine streams live video to any browser. Check on a job from home, reposition the view like you're standing there, and press the machine's physical stop button the moment something goes wrong.</p>
+        <p>No code. No integrators. No new infrastructure. Your operators teach it by hand in minutes.</p>
+        <p>Overnight runs without the 2am drive. Failed jobs caught before they become scrap. A machine left running is no longer a machine left alone.</p>
+        <p>Now live in its first pilot deployment at a Massachusetts machine shop.</p>
+      </div>
 
-    <div class="footer-cta-row">
-      <a href="mailto:founders@multiplylabor.com" class="footer-cta">Get in touch</a>
+      <div class="footer-cta-row">
+        <a href="mailto:founders@multiplylabor.com" class="footer-cta">Request to Join the Beta</a>
+      </div>
     </div>
   </div>
 
