@@ -62,20 +62,33 @@
     overflow: hidden;
   }
 
+  /* drawn logo spans x 64-627, y 46-929 of its 714x1006 canvas */
   .logo-stage {
+    --logo-h: clamp(140px, 24vh, 220px);
     position: relative;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
     width: 100%;
-    height: clamp(140px, 24vh, 220px);
+    opacity: 0;
   }
 
 
   .hero-logo {
-    height: 100%;
+    height: var(--logo-h);
     width: auto;
-    opacity: 0;
+  }
+
+  /* 1.3x the drawn logo width (563/1006), shifted to the drawing's center */
+  .hero-name {
+    display: block;
+    width: calc(var(--logo-h) * 0.7275);
+    margin-top: calc(var(--logo-h) * 0.04);
+    position: relative;
+    left: calc(var(--logo-h) * -0.0114);
+    fill: var(--white);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 700;
   }
 
 
@@ -369,8 +382,11 @@
        SECTION 1 - HERO
        ════════════════════════════════════════ -->
   <section class="hero">
-    <div class="logo-stage">
-      <img class="hero-logo" id="heroLogo" src="/brand/sable-logo-white-line.svg" alt="Sable Robotics">
+    <div class="logo-stage" id="heroLogo">
+      <img class="hero-logo" src="/brand/sable-logo-white-line.svg" alt="">
+      <svg class="hero-name" viewBox="0 0 1000 58" role="img" aria-label="Sable Robotics">
+        <text x="0" y="58" font-size="80" textLength="1000" lengthAdjust="spacing">SABLE ROBOTICS</text>
+      </svg>
     </div>
     <div class="scroll-arrow" id="scrollArrow">
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -424,11 +440,9 @@
     <div class="footer-corners-top">
       <div class="footer-brand">
         <img src="/brand/sable-patch.svg" alt="">
-        Sable Robotics
       </div>
       <div class="footer-brand">
         <img src="/brand/sable-patch.svg" alt="">
-        Sable Robotics
       </div>
     </div>
 
@@ -439,11 +453,9 @@
     <div class="footer-corners-bottom">
       <div class="footer-brand">
         <img src="/brand/sable-patch.svg" alt="">
-        Sable Robotics
       </div>
       <div class="footer-brand">
         <img src="/brand/sable-patch.svg" alt="">
-        Sable Robotics
       </div>
     </div>
   </section>
