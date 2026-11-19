@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sablerobotics.ai/sitemap.xml
